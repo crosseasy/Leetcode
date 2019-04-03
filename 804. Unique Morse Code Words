@@ -1,0 +1,16 @@
+class Solution:
+    def uniqueMorseRepresentations(self, words: List[str]) -> int:
+        a=[]
+        lst1 = []
+        for i in range(97):
+            lst1.append(0)
+        lst2 = [".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---",".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."]
+        lst3 = lst1 + lst2
+        result = ''
+        for i in words:
+            result=''
+            for j in i:
+                result += lst3[ord(j)]
+            a.append(result)
+        count=len(set(a))
+        return count
