@@ -1,0 +1,46 @@
+class Solution:
+    def numUniqueEmails(self, emails: List[str]) -> int:
+        a = []
+        b = []
+        for i in emails:
+            k=-1
+            for j in i:
+                k+=1
+                if j=='@':
+                    point=k
+            a.append(i[0:point])
+            b.append(i[point:len(i)])
+        # print("a是前面的部分",a)
+        # print("b是后面的部分",b) #后面不需要改变
+        c = []
+        for i in a:
+            count=0
+            k = -1
+            for j in i:
+                k += 1
+                if j == '+':
+                    c.append(i[0:k])
+                    count=1
+                    break
+            if count==0:
+                c.append(i)
+        # print("c去掉+以及+之后的内容",c)
+        d=[]
+        f=[]
+        count=-1
+        for i in c:
+            count+=1
+            e=i.replace('.','')
+            d.append(e)
+            if len(i)==len(e):
+                f.append(count)
+            else:
+                f.append(0)
+        # print("去点之后的内容：",d)
+        g=[]
+        for i in range(len(b)):
+            # if f[i]==0:
+            g.append(d[i]+b[i])
+        # print("最后的结果",g)
+        return len(set(g))
+                
