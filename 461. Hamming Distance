@@ -1,0 +1,21 @@
+class Solution:
+    def hammingDistance(self, x: int, y: int) -> int:
+        A=[]
+        B=[]
+        while x>0:
+            A.append(x%2)
+            x=x//2
+        while y>0:
+            B.append(y%2)
+            y=y//2
+        if len(A)>len(B):
+            for i in range(len(B),len(A)):
+                B.append(0)
+        else:
+            for i in range(len(A),len(B)):
+                A.append(0)
+        count=0
+        for i in range(len(A)):
+            if not A[i]==B[i]:
+                count+=1
+        return count
