@@ -1,6 +1,0 @@
-class Solution:
-    def repeatedNTimes(self, A: List[int]) -> int:
-        B = sorted(A)
-        for i in range(len(B)):
-            if B[i]==B[int(i+(len(B)/2)-1)]:
-                return B[i]
